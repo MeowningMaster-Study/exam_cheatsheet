@@ -48,7 +48,7 @@ struct graph {
     // тип хранимых значений на рёбрах
     // если нужен взвешенный граф, то bool меняем на нужный тип, например на int
     typedef bool value_type;
-    const value_type default_value = false;
+    const static value_type default_value = false;
 
     size_t size;
     value_type **adjacency_matrix;

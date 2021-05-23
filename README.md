@@ -8,4 +8,6 @@
 ## Графы
 На основе:
 - [матрицы смежности](usage/adjacency_matrix_graph.cpp)
-- [списка смежности](usage/adjacency_list_graph.cpp)
+- [списка(структуры) смежности](usage/adjacency_list_graph.cpp)
+## Деревья
+- [Невпорядковане в стандартній формі](usage/unordered_tree.cpp)
