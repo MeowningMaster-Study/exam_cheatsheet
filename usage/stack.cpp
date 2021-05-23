@@ -7,12 +7,17 @@ struct stack {
         value_type value;
         node *prev;
 
-        node(value_type value): value(value), prev(nullptr) {}
+        node(value_type value) {
+            this->value = value;
+            prev = nullptr;
+        }
     };
 
     node *top;
 
-    stack(): top(nullptr) {}
+    stack() {
+        top = nullptr;
+    }
 
     void push(value_type value) {
         node *new_node = new node(value);

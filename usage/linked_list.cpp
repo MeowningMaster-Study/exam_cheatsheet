@@ -2,32 +2,43 @@
 using namespace std;
 
 struct linked_list {
+    // тип значений
     typedef int value_type;
 
     struct node {
         value_type value;
         node *next;
 
-        node(value_type value): next(nullptr) {
+        node(value_type value) {
             this->value = value;
+            next = nullptr;
         }
     };
 
-    size_t size;
+    // раскоментируй все упоминания size если нужен размер
+    // size_t size;
     node *begin;
     node *end;
 
-    linked_list(): size(0), begin(nullptr), end(nullptr) {}
+    linked_list() {
+        // size = 0;
+        begin = nullptr;
+        end = nullptr;
+    }
     
     void push_back(value_type value) {
         node *node_new = new node(value);
-        if (size == 0) {
+        if (empty()) {
             begin = node_new;
         } else {
             end->next = node_new;
         }
         end = node_new;
-        size++;
+        // size++;
+    }
+
+    bool empty() {
+        return begin == nullptr;
     }
 
     ~linked_list() {
@@ -52,7 +63,7 @@ int main() {
         ll.push_back(r);
     }
 
-    for (linked_list::node *i = ll.begin; i != nullptr; i = i->next) {
+    for (auto *i = ll.begin; i != nullptr; i = i->next) {
         cout << i->value << ' ';
     }
     cout << endl;

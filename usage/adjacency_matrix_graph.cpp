@@ -1,18 +1,24 @@
 #include <iostream>
 using namespace std;
 
+// нужен для реализации bfs
 struct stack {
     typedef size_t value_type;
     struct node {
         value_type value;
         node *prev;
 
-        node(value_type value): value(value), prev(nullptr) {}
+        node(value_type value) {
+            this->value = value;
+            prev = nullptr;
+        }
     };
 
     node *top;
 
-    stack(): top(nullptr) {}
+    stack() {
+        top = nullptr;
+    }
 
     void push(value_type value) {
         node *new_node = new node(value);
@@ -39,6 +45,7 @@ struct stack {
 };
 
 struct graph {
+    // тип хранимых значений
     // если нужен взвешенный граф, то bool меняем на нужный тип, например на int
     typedef bool value_type;
     const value_type default_value = false;
@@ -46,7 +53,10 @@ struct graph {
     size_t size;
     value_type **adjacency_matrix;
 
-    graph(size_t size): size(size), adjacency_matrix(new value_type*[size]) {
+    graph(size_t size) {
+        this->size = size;
+        adjacency_matrix = new value_type*[size];
+
         for (size_t i = 0; i < size; i++) {
             value_type *row = new value_type[size];
             for (size_t j = 0; j < size; j++) {
@@ -56,6 +66,7 @@ struct graph {
         }
     }
 
+    // нужно для dfs и bfs
     bool *create_visited() {
         bool *visited = new bool[size];
         for (size_t i = 0; i < size; i++) {
@@ -78,6 +89,7 @@ struct graph {
         }
     }
 
+    // поиск в глубину
     void dfs(size_t begin) {
         dfs_process(begin, create_visited());
     }
@@ -103,25 +115,27 @@ struct graph {
         }
     }
 
+    // поиск в ширину
     void bfs(size_t begin) {
         bfs_process(begin, create_visited());
     }
 
+    // добавить/изменить ребро
     void modify_edge(size_t begin, size_t end, value_type value) {
         adjacency_matrix[begin][end] = value;
     }
 
+
+    // для решение задач на компоненты связности
     void search_components() {
         bool *visited = create_visited();
 
         for (size_t i = 0; i < size; i++) {
             if (!visited[i]) {
-                // тут можно посчитать количество, а в bfs(dfs) можно рассмотреть отдельные вершины
-
                 visited[i] = true;
                 bfs_process(i, visited);
 
-                // если через dfs, то нужно заменить всё в if на:
+                // если нужно через dfs, то замени всё в if на:
                 // dfs_process(i, visited);
             }
         }
@@ -139,6 +153,7 @@ int main() {
     size_t n;
     cin >> n;
 
+    // создаём граф с n вершинами
     graph g(n);
 
     size_t v;
