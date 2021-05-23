@@ -44,26 +44,61 @@ struct stack {
     }
 };
 
-struct graph {
-    // тип хранимых значений на рёбрах
-    // если нужен взвешенный граф, то bool меняем на нужный тип, например на int
-    typedef bool value_type;
-    const value_type default_value = false;
+// для хранения списка связей
+struct linked_list {
+    // если нужен взвешенный, то можно заменить на pair<size_t, int>
+    typedef size_t value_type;
 
+    struct node {
+        value_type value;
+        node *next;
+
+        node(value_type value) {
+            this->value = value;
+            next = nullptr;
+        }
+    };
+
+    node *begin;
+    node *end;
+
+    linked_list() {
+        begin = nullptr;
+        end = nullptr;
+    }
+    
+    void push_back(value_type value) {
+        node *node_new = new node(value);
+        if (empty()) {
+            begin = node_new;
+        } else {
+            end->next = node_new;
+        }
+        end = node_new;
+    }
+
+    bool empty() {
+        return begin == nullptr;
+    }
+
+    ~linked_list() {
+        node *i = begin;
+        while (i != nullptr) {
+            node *s = i;
+            i = i->next;
+            delete s;
+        }
+    }
+};
+
+
+struct graph {
     size_t size;
-    value_type **adjacency_matrix;
+    linked_list *adjacency_list;
 
     graph(size_t size) {
         this->size = size;
-        adjacency_matrix = new value_type*[size];
-
-        for (size_t i = 0; i < size; i++) {
-            value_type *row = new value_type[size];
-            for (size_t j = 0; j < size; j++) {
-                row[j] = default_value;
-            }
-            adjacency_matrix[i] = row;
-        }
+        adjacency_list = new linked_list[size];
     }
 
     // нужно для dfs и bfs
@@ -81,10 +116,9 @@ struct graph {
         // тут можно делать, что нужно с вершиной
         // cout << x << endl;
 
-        value_type *row = adjacency_matrix[x];
-        for (size_t i = 0; i < size; i++) {
-            if (row[i] != default_value && !visited[i]) {
-                dfs_process(i, visited);
+        for (auto i = adjacency_list[x].begin; i != nullptr; i = i->next) {
+            if (!visited[i->value]) {
+                dfs_process(i->value, visited);
             }
         }
     }
@@ -105,11 +139,10 @@ struct graph {
             // тут можно делать, что нужно с вершиной
             // cout << x << endl;
 
-            value_type *row = adjacency_matrix[x];
-            for (size_t i = 0; i < size; i++) {
-                if (row[i] != default_value && !visited[i]) {
-                    visited[i] = true;
-                    to_visit.push(i);
+            for (auto i = adjacency_list[x].begin; i != nullptr; i = i->next) {
+                if (!visited[i->value]) {
+                    visited[i->value] = true;
+                    to_visit.push(i->value);
                 }
             }
         }
@@ -120,9 +153,9 @@ struct graph {
         bfs_process(begin, create_visited());
     }
 
-    // добавить/изменить ребро
-    void modify_edge(size_t begin, size_t end, value_type value) {
-        adjacency_matrix[begin][end] = value;
+    // добавить ребро
+    void add_edge(size_t begin, size_t end) {
+        adjacency_list[begin].push_back(end);
     }
 
 
@@ -142,10 +175,7 @@ struct graph {
     }
 
     ~graph() {
-        for (size_t i = 0; i < size; i++) {
-            delete [] adjacency_matrix[i];
-        }
-        delete [] adjacency_matrix;
+        delete [] adjacency_list;
     }
 };
 
@@ -165,9 +195,9 @@ int main() {
         a--;
         b--;
 
-        g.modify_edge(a, b, true);
+        g.add_edge(a, b);
         // если ребро направленное второй вызов не нужен
-        g.modify_edge(b, a, true);
+        g.add_edge(b, a);
     }
 
     g.dfs(0);

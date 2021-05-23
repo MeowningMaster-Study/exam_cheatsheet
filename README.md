@@ -8,4 +8,4 @@
 ## Графы
 На основе:
 - [матрицы смежности](usage/adjacency_matrix_graph.cpp)
-- [списка смежности]()
+- [списка смежности](usage/adjacency_list_graph.cpp)
