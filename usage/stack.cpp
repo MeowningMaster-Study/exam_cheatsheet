@@ -26,7 +26,7 @@ struct stack {
     }
 
     value_type pop() {
-        if (top == nullptr) {
+        if (empty()) {
             throw "Can't pop";
         }
 

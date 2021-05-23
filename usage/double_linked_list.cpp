@@ -7,8 +7,7 @@ struct double_linked_list {
 
     struct node {
         value_type value;
-        node *next;
-        node *prev;
+        node *next, *prev;
 
         node(value_type value) {
             this->value = value;
@@ -33,8 +32,7 @@ struct double_linked_list {
 
     // если нужно поддерживать размер, расскоментируй все ёго упоминания
     // size_t size;
-    node *begin;
-    node *end;
+    node *begin, *end;
 
     double_linked_list() {
         // size = 0;
@@ -103,13 +101,13 @@ int main() {
     }
 
     // обход
-    for(auto *i = dll.begin; i != nullptr; i = i->next) {
+    for (auto *i = dll.begin; i != nullptr; i = i->next) {
         cout << i->value << ' ';
     }
     cout << endl;
 
     // обратный обход
-    for(auto *i = dll.end; i != nullptr; i = i->prev) {
+    for (auto *i = dll.end; i != nullptr; i = i->prev) {
         cout << i->value << ' ';
     }
     cout << endl;

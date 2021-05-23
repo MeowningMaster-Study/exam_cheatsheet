@@ -27,7 +27,7 @@ struct stack {
     }
 
     value_type pop() {
-        if (top == nullptr) {
+        if (empty()) {
             throw "Can't pop";
         }
 
@@ -159,7 +159,7 @@ int main() {
     size_t v;
     cin >> v;
 
-    for (int i = 0; i < v; i++) {
+    for (size_t i = 0; i < v; i++) {
         size_t a, b;
         cin >> a >> b;
         a--;

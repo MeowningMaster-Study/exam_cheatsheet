@@ -55,7 +55,7 @@ struct tree_node {
         }
 
         value_type pop() {
-            if (top == nullptr) {
+            if (empty()) {
                 throw "Can't pop";
             }
 

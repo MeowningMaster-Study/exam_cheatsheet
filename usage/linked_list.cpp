@@ -17,8 +17,7 @@ struct linked_list {
 
     // раскоментируй все упоминания size если нужен размер
     // size_t size;
-    node *begin;
-    node *end;
+    node *begin, *end;
 
     linked_list() {
         // size = 0;
