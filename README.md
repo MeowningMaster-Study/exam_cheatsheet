@@ -3,6 +3,7 @@
 ## Базовое
 - [Стек](usage/stack.cpp)
 - [Очередь](usage/queue.cpp)
+- [Вектор](usage/vector.cpp)
 ## Связные списки
 - [Односвязный](usage/linked_list.cpp)
 - [Двусвязный](usage/double_linked_list.cpp)
