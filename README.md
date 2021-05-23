@@ -10,4 +10,4 @@
 - [матрицы смежности](usage/adjacency_matrix_graph.cpp)
 - [списка(структуры) смежности](usage/adjacency_list_graph.cpp)
 ## Деревья
-- [Невпорядковане в стандартній формі](usage/unordered_tree.cpp)
+- [Неупорядоченное в стандартной форме](usage/unordered_tree.cpp)
