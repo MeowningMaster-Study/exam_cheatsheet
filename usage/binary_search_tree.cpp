@@ -178,7 +178,7 @@ int main() {
             }
             break;
         } 
-        case 'f': {
+        case 'f': { // search
             auto result = root->find(b);
             cout << (result.success ? "Yes" : "No") << endl;
             break;
