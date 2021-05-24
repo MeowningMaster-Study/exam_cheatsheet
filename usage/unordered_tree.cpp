@@ -20,7 +20,7 @@ struct tree_node {
     // обход в глубину
     void dfs() {
         // тут пишем что нужно
-        cout << this->value << endl;
+        // cout << this->value << endl;
 
         for (size_t i = 0; i < children_count; i++) {
             if (children[i] != nullptr) {
@@ -81,7 +81,7 @@ struct tree_node {
             tree_node *x = s.pop();
 
             // тут пишем что нужно
-            cout << x->value << endl;
+            // cout << x->value << endl;
 
             for (size_t i = 0; i < children_count; i++) {
                 if (x->children[i] != nullptr) {
