@@ -12,8 +12,11 @@
 - [матрицы смежности](usage/adjacency_matrix_graph.cpp)
 - [списка(структуры) смежности](usage/adjacency_list_graph.cpp)
 ## Деревья
-- [Неупорядоченное в стандартной форме](usage/unordered_tree.cpp)
+На указателях:
+- [Обычное](usage/unordered_tree.cpp)
 - [Бинарного поиска](usage/binary_search_tree.cpp)
+
+На буффере: сделай сам, на основе [вектора](usage/vector.cpp)
 ## Нереализовано
 - циклический список
 - АВЛ-дерево
