@@ -7,6 +7,7 @@
 ## Связные списки
 - [Односвязный](usage/linked_list.cpp)
 - [Двусвязный](usage/double_linked_list.cpp)
+- [Циклический](usage/cycled_linked_list.cpp)
 ## Графы
 На основе:
 - [матрицы смежности](usage/adjacency_matrix_graph.cpp)
@@ -22,13 +23,12 @@
 - [Обычное](usage/unordered_tree.cpp)
 - [Бинарного поиска](usage/binary_search_tree.cpp)
 
-На буффере: сделай сам, на основе [вектора](usage/vector.cpp)
+На буффере: сделай сам на основе [вектора](usage/vector.cpp)
 ## Парсинг мат. выражений
 - [Теория](https://www.tutorialspoint.com/data_structures_algorithms/expression_parsing.htm)
 - [Инфиксная в постфиксную](https://www.tutorialspoint.com/data_structures_algorithms/expression_parsing_using_statck.htm), можно легко переделать в префиксную (польскую)
 
 ## Нереализовано
-- циклический список
 - АВЛ-дерево
 - остовное дерево
 - сжатое хранение
