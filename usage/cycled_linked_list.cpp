@@ -121,7 +121,7 @@ int main() {
 
     // удалить 2 елемент
     cll.entry->next->next->pull_out();
-    //dll.size--;
+    //cll.size--;
 
     // достаем все елементы
     while (!cll.empty()) {
