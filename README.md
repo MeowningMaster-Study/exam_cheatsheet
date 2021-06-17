@@ -38,7 +38,3 @@
 [Теория](https://www.tutorialspoint.com/data_structures_algorithms/expression_parsing.htm)
 
 Перевод из инфиксной в постфиксную: [algolist.ru](http://algolist.ru/maths/misc/revpn.php), [tutorialspoint.com](https://www.tutorialspoint.com/data_structures_algorithms/expression_parsing_using_statck.htm). Можно переделать в префиксную.
-
-## Нереализовано
-- АВЛ-дерево
-- остовное дерево
