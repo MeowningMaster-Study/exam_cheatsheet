@@ -78,28 +78,36 @@ struct tree_node {
     }
 
     // для обхода в ширину
-    struct stack {
+    struct queue {
         typedef tree_node* value_type;
         struct node {
             value_type value;
-            node *prev;
+            node *next;
 
             node(value_type value) {
                 this->value = value;
-                prev = nullptr;
+                next = nullptr;
             }
         };
 
-        node *top;
+        //! last может остаться не пустым, даже если очередь пуста
+        node *first, *last;
 
-        stack() {
-            top = nullptr;
+        queue() {
+            first = nullptr;
+            last = nullptr;
         }
 
         void push(value_type value) {
             node *new_node = new node(value);
-            new_node->prev = top;
-            top = new_node;
+
+            if (empty()) {
+                first = new_node;
+                
+            } else {
+                last->next = new_node;
+            }
+            last = new_node;
         }
 
         value_type pop() {
@@ -107,22 +115,22 @@ struct tree_node {
                 throw "Can't pop";
             }
 
-            value_type value = top->value;
-            node *old_top = top;
-            top = top->prev;
-            delete old_top;
+            value_type value = first->value;
+            node *old_first = first;
+            first = first->next;
+            delete old_first;
 
             return value;
         }
 
         bool empty() {
-            return top == nullptr;
+            return first == nullptr;
         }
     };
 
     // обход в ширину
     void bfs() {
-        stack s;
+        queue s;
         s.push(this);
 
         while (!s.empty()) {
