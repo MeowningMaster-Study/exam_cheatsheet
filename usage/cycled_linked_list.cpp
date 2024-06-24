@@ -2,7 +2,7 @@
 using namespace std;
 
 struct cycled_linked_list {
-    // тип хранимых значений
+    // тип даних, що зберігаються
     typedef int value_type;
 
     struct node {
@@ -15,8 +15,8 @@ struct cycled_linked_list {
             prev = nullptr;
         }
 
-        // удалить текущий елемент с сохранением порядка
-        // не забудь изменить размер, если он нужен
+        // видалити поточний елемент із збереженням порядку
+        // не забудьте змінити розмір, якщо він потрібен
         void pull_out() {
             if (prev != nullptr) {
                 prev->next = next;
@@ -30,10 +30,10 @@ struct cycled_linked_list {
         }
     };
 
-    // если нужно поддерживать размер, расскоментируй все ёго упоминания
+    // якщо потрібно підтримувати розмір, розкоментуйте всі його згадування
     // size_t size;
     node *entry;
-    // entry всегда указывает на последний добавленный елемент
+    // entry завжди вказує на останній доданий елемент
 
     cycled_linked_list() {
         // size = 0;
@@ -108,7 +108,7 @@ int main() {
         cll.push_back(r);
     }
 
-    // обход
+    // обхід
     if (!cll.empty()) {
         auto i = cll.entry;
 
@@ -119,11 +119,11 @@ int main() {
     }
     cout << endl;
 
-    // удалить 2 елемент
+    // видалити 2 елемент
     cll.entry->next->next->pull_out();
     //cll.size--;
 
-    // достаем все елементы
+    // дістаємо всі елементи
     while (!cll.empty()) {
         cout << cll.pop_back() << ' ';
     }

@@ -2,7 +2,7 @@
 using namespace std;
 
 struct linked_list {
-    // тип значений
+    // тип даних, що зберігаються
     typedef int value_type;
 
     struct node {
@@ -15,7 +15,7 @@ struct linked_list {
         }
     };
 
-    // раскоментируй все упоминания size если нужен размер
+    // якщо потрібно підтримувати розмір, розкоментуйте всі його згадування
     // size_t size;
     node *begin, *end;
 

@@ -2,7 +2,7 @@
 using namespace std;
 
 struct tree_node {
-    // тип значення, що зберігається
+    // тип даних, що зберігається
     typedef int value_type;
     value_type value;
     tree_node *children[2];

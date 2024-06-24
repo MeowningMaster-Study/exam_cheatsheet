@@ -2,7 +2,7 @@
 using namespace std;
 
 struct double_linked_list {
-    // тип хранимых значений
+    // тип даних, що зберігається
     typedef int value_type;
 
     struct node {
@@ -15,8 +15,8 @@ struct double_linked_list {
             prev = nullptr;
         }
 
-        // удалить текущий елемент с сохранением порядка
-        // не забудь изменить размер, если он нужен
+        // видалити поточний елемент із збереженням порядку
+        // не забудьте змінити розмір, якщо він потрібен
         void pull_out() {
             if (prev != nullptr) {
                 prev->next = next;
@@ -30,7 +30,7 @@ struct double_linked_list {
         }
     };
 
-    // если нужно поддерживать размер, расскоментируй все ёго упоминания
+    // якщо потрібно підтримувати розмір, розкоментуйте всі його згадування
     // size_t size;
     node *begin, *end;
 
@@ -100,23 +100,23 @@ int main() {
         dll.push_back(r);
     }
 
-    // обход
+    // обхід
     for (auto *i = dll.begin; i != nullptr; i = i->next) {
         cout << i->value << ' ';
     }
     cout << endl;
 
-    // обратный обход
+    // зворотній обхід
     for (auto *i = dll.end; i != nullptr; i = i->prev) {
         cout << i->value << ' ';
     }
     cout << endl;
 
-    // удалить 2 елемент
+    // видалити 2 елемент
     dll.begin->next->pull_out();
     //dll.size--;
 
-    // достаем все елементы
+    // дістаємо всі елементи
     while (!dll.empty()) {
         cout << dll.pop_back() << ' ';
     }

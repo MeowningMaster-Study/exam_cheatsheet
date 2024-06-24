@@ -2,9 +2,9 @@
 using namespace std;
 
 struct tree_node {
-    //количество сыновей
+    // кількість дочірніх елементів
     const static int children_count = 2;
-    //тип хранимого значения
+    // тип даних, що зберігаються
     typedef int value_type;
     value_type value;
     tree_node *children[children_count];
@@ -17,9 +17,9 @@ struct tree_node {
         }
     }
 
-    // обход в глубину
+    // обхід у глибину
     void dfs() {
-        // тут пишем что нужно
+        // тут можна робити щось з вершиною
         // cout << this->value << endl;
 
         for (size_t i = 0; i < children_count; i++) {
@@ -29,7 +29,7 @@ struct tree_node {
         }
     }
 
-    // для обхода в ширину
+    // для обходу у ширину
     struct stack {
         typedef tree_node* value_type;
         struct node {
@@ -72,7 +72,7 @@ struct tree_node {
         }
     };
 
-    // обход в ширину
+    // обхід у ширину
     void bfs() {
         stack s;
         s.push(this);
@@ -80,7 +80,7 @@ struct tree_node {
         while (!s.empty()) {
             tree_node *x = s.pop();
 
-            // тут пишем что нужно
+            // тут можна робити щось з вершиною
             // cout << x->value << endl;
 
             for (size_t i = 0; i < children_count; i++) {

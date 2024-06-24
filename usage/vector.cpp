@@ -39,7 +39,7 @@ struct vector {
         buffer[index] = value;
     }
 
-    // увеличиваем вместимость по надобности
+    // збільшуємо місткість за необхідності
     void grow_to(size_t new_size) {
         if (capacity == 0) {
             buffer = new value_type[new_size];
@@ -73,7 +73,7 @@ struct vector {
 };
 
 int main() {
-    // пример 1
+    // приклад 1
     vector v;
 
     int n;
@@ -90,7 +90,7 @@ int main() {
     }
     cout << endl;
 
-    // пример 2
+    // приклад 2
     int m;
     cin >> m;
     vector w(m);

@@ -2,7 +2,7 @@
 using namespace std;
 
 struct indexed_linked_lists {
-    // тип значений
+    // тип даних, що зберігаються
     typedef int value_type;
 
     struct linked_list {
@@ -16,7 +16,7 @@ struct indexed_linked_lists {
             }
         };
 
-        // раскоментируй все упоминания size если нужен размер
+        // якщо потрібно підтримувати розмір, розкоментуйте всі його згадування
         // size_t size;
         node *begin, *end;
 
@@ -68,11 +68,11 @@ struct indexed_linked_lists {
 };
 
 int main() {
-    // будем хранить числа с разными остатками от 10
-    // в разных связных списках
+    // будемо зберігати числа з різними залишками від 10
+    // у різних зв'язаних списках
     indexed_linked_lists storage(10);
 
-    // заполняем
+    // заповнюємо
     int n;
     cin >> n;
     for (int i = 0; i < n; i++) {
@@ -81,7 +81,7 @@ int main() {
         storage[r % 10].push_back(r);
     }
 
-    // ищем
+    // шукаємо
     int m;
     cin >> m;
     for (int i = 0; i < n; i++) {

@@ -17,7 +17,7 @@ struct sparse_linked_list {
         }
     };
 
-    // раскоментируй все упоминания size если нужен размер
+    // якщо потрібно підтримувати розмір, розкоментуйте всі його згадування
     // size_t size;
     node *begin, *end;
 
@@ -27,8 +27,8 @@ struct sparse_linked_list {
         end = nullptr;
     }
     
-    //! push_back не смотрит на порядок индексов
-    //! лучше пользоваться insert
+    //! push_back не дивиться на порядок індексів
+    //! краще використовувати insert
     void push_back(size_t index, value_type value) {
         node *node_new = new node(index, value);
         if (empty()) {
@@ -40,7 +40,7 @@ struct sparse_linked_list {
         // size++;
     }
 
-    // возвращает false если индекс занят
+    // поверає false, якщо індекс зайнятий
     bool insert(size_t index, value_type value) {
         if (empty()) {
             node *node_new = new node(index, value);
