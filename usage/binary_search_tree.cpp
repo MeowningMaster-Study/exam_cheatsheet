@@ -2,7 +2,7 @@
 using namespace std;
 
 struct tree_node {
-    //тип хранимого значения
+    // тип значення, що зберігається
     typedef int value_type;
     value_type value;
     tree_node *children[2];
@@ -14,12 +14,12 @@ struct tree_node {
     }
 
     bool cmp(value_type a, value_type b) {
-        // поменяйте на a > b если нужен обратный порядок
+        // зміни на a > b, якщо треба зворотній порядок
         return a < b;
     }
     
     bool insert(value_type value) {
-        // возвращаем false, если елемент уже был вставлен
+        // повертаємо false, якщо елемент вже був доданий
         if (value == this->value) {
             return false;
         }
@@ -63,9 +63,9 @@ struct tree_node {
     }
     
 
-    // обход в глубину
+    // обхід у глибину
     void dfs() {
-        // тут пишем что нужно
+        // тут можна робити щось з вершиною
         // cout << this->value << endl;
 
         if (children[0] != nullptr) {
@@ -77,7 +77,7 @@ struct tree_node {
         }
     }
 
-    // для обхода в ширину
+    // для обходу в ширину
     struct queue {
         typedef tree_node* value_type;
         struct node {
@@ -90,7 +90,7 @@ struct tree_node {
             }
         };
 
-        //! last может остаться не пустым, даже если очередь пуста
+        //! last може залишитись непорожнім, навіть якщо черга порожня
         node *first, *last;
 
         queue() {
@@ -128,7 +128,7 @@ struct tree_node {
         }
     };
 
-    // обход в ширину
+    // обхід у ширину
     void bfs() {
         queue s;
         s.push(this);
@@ -136,7 +136,7 @@ struct tree_node {
         while (!s.empty()) {
             tree_node *x = s.pop();
 
-            // тут пишем что нужно
+            // тут можна робити щось з вершиною
             //cout << x->value << endl;
 
             if (x->children[0] != nullptr) {
@@ -151,7 +151,7 @@ struct tree_node {
 };
 
 int main() {
-    // пример 1
+    // приклад 1
     tree_node *a = new tree_node(5);
     tree_node *b = new tree_node(2);
     tree_node *c = new tree_node(3);
@@ -164,7 +164,7 @@ int main() {
     a->dfs();
     a->bfs();
 
-    // пример 2
+    // приклад 2
     tree_node *root = nullptr;
 
     int n;

@@ -14,7 +14,7 @@ struct queue {
         }
     };
 
-    //! last может остаться не пустым, даже если очередь пуста
+    //! last може залишитись непорожнім, навіть якщо черга порожня
     node *first, *last;
 
     queue() {
@@ -52,9 +52,9 @@ struct queue {
     }
 };
 
-// для хранения списка связей
+// для збереження списку зв'язків
 struct linked_list {
-    // если нужен взвешенный, то можно заменить на pair<size_t, int>
+    // якщо потрібен зважений, то можна замінити на pair<size_t, int>
     typedef size_t value_type;
 
     struct node {
@@ -121,7 +121,7 @@ struct graph {
     void dfs_process(size_t x, bool *visited) {
         visited[x] = true;
 
-        // тут можно делать, что нужно с вершиной
+        // тут можна робити щось з вершиною
         // cout << x << endl;
 
         for (auto i = adjacency_list[x].begin; i != nullptr; i = i->next) {
@@ -131,7 +131,7 @@ struct graph {
         }
     }
 
-    // поиск в глубину
+    // пошук у глибину
     void dfs(size_t begin) {
         dfs_process(begin, create_visited());
     }
@@ -144,7 +144,7 @@ struct graph {
         while (!to_visit.empty()) {
             size_t x = to_visit.pop();
 
-            // тут можно делать, что нужно с вершиной
+            // тут можна робити щось з вершиною
             // cout << x << endl;
 
             for (auto i = adjacency_list[x].begin; i != nullptr; i = i->next) {
@@ -156,18 +156,18 @@ struct graph {
         }
     }
 
-    // поиск в ширину
+    // пошук у ширину
     void bfs(size_t begin) {
         bfs_process(begin, create_visited());
     }
 
-    // добавить ребро
+    // додати ребро
     void add_edge(size_t begin, size_t end) {
         adjacency_list[begin].push_back(end);
     }
 
 
-    // для решение задач на компоненты связности
+    // для вирішення задач на компоненти зв'язності
     void search_components() {
         bool *visited = create_visited();
 
@@ -176,7 +176,7 @@ struct graph {
                 visited[i] = true;
                 bfs_process(i, visited);
 
-                // если нужно через dfs, то замени всё в if на:
+                // якщо потрібно через dfs, то заміни все в if на:
                 // dfs_process(i, visited);
             }
         }
@@ -191,7 +191,7 @@ int main() {
     size_t n;
     cin >> n;
 
-    // создаём граф с n вершинами
+    // створюємо граф з n вершинами
     graph g(n);
 
     size_t v;
@@ -204,7 +204,7 @@ int main() {
         b--;
 
         g.add_edge(a, b);
-        // если ребро направленное второй вызов не нужен
+        // якщо ребро направлене другий виклик не потрібен
         g.add_edge(b, a);
     }
 

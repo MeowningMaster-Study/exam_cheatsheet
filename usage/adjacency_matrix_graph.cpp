@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-// нужен для реализации bfs
+// потрібен для реалізації bfs
 struct queue {
     typedef int value_type;
     struct node {
@@ -14,7 +14,7 @@ struct queue {
         }
     };
 
-    //! last может остаться не пустым, даже если очередь пуста
+    //! last може залишитись непорожнім, навіть якщо черга порожня
     node *first, *last;
 
     queue() {
@@ -53,8 +53,8 @@ struct queue {
 };
 
 struct graph {
-    // тип хранимых значений на рёбрах
-    // если нужен взвешенный граф, то bool меняем на нужный тип, например на int
+    // тип значень, що зберігаються в ребрах
+    // якщо потрібен зважений граф, то bool змінюємо на потрібний тип, наприклад на int
     typedef bool value_type;
     const static value_type default_value = false;
 
@@ -74,7 +74,7 @@ struct graph {
         }
     }
 
-    // нужно для dfs и bfs
+    // треба для dfs та bfs
     bool *create_visited() {
         bool *visited = new bool[size];
         for (size_t i = 0; i < size; i++) {
@@ -86,7 +86,7 @@ struct graph {
     void dfs_process(size_t x, bool *visited) {
         visited[x] = true;
 
-        // тут можно делать, что нужно с вершиной
+        // тут можна робити щось з вершиною
         // cout << x << endl;
 
         value_type *row = adjacency_matrix[x];
@@ -97,7 +97,7 @@ struct graph {
         }
     }
 
-    // поиск в глубину
+    // пошук у глибину
     void dfs(size_t begin) {
         dfs_process(begin, create_visited());
     }
@@ -110,7 +110,7 @@ struct graph {
         while (!to_visit.empty()) {
             size_t x = to_visit.pop();
 
-            // тут можно делать, что нужно с вершиной
+            // тут можна робити щось з вершиною
             // cout << x << endl;
 
             value_type *row = adjacency_matrix[x];
@@ -123,18 +123,18 @@ struct graph {
         }
     }
 
-    // поиск в ширину
+    // пошук у ширину
     void bfs(size_t begin) {
         bfs_process(begin, create_visited());
     }
 
-    // добавить/изменить ребро
+    // додати/змінити ребро
     void modify_edge(size_t begin, size_t end, value_type value) {
         adjacency_matrix[begin][end] = value;
     }
 
 
-    // для решение задач на компоненты связности
+    // для вирішення задач на компоненти зв'язності
     void search_components() {
         bool *visited = create_visited();
 
@@ -143,7 +143,7 @@ struct graph {
                 visited[i] = true;
                 bfs_process(i, visited);
 
-                // если нужно через dfs, то замени всё в if на:
+                // якщо потрібно через dfs, то заміни все в if на:
                 // dfs_process(i, visited);
             }
         }
@@ -161,7 +161,7 @@ int main() {
     size_t n;
     cin >> n;
 
-    // создаём граф с n вершинами
+    // створюємо граф з n вершинами
     graph g(n);
 
     size_t v;
@@ -174,7 +174,7 @@ int main() {
         b--;
 
         g.modify_edge(a, b, true);
-        // если ребро направленное второй вызов не нужен
+        // якщо ребро направлене другий виклик не потрібен
         g.modify_edge(b, a, true);
     }
 
